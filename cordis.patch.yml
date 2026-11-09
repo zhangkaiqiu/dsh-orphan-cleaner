@@ -1,0 +1,4 @@
+- insert:
+    - id: orphan-cleaner
+      name: dsh-orphan-cleaner
+      config: {}
