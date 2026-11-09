@@ -34,15 +34,6 @@
 面板里按「进程组」聚合：一组就是一次启动留下的完整进程树，显示内存、创建时间、
 占用端口和成员 pid。勾选后点「结束选中」，会做二次确认并重新扫描校验。
 
-## Agent 工具
-
-| 工具 | 作用 |
-|---|---|
-| `orphan_scan` | 返回分组摘要（高置信 / 待确认、内存、端口） |
-| `orphan_kill` | 清理。默认 `onlyHigh=true`；也可传 `groupIds` / `pids` 精确指定 |
-
-清理前会重新扫一次，只对「刚刚确认仍是孤儿」的 pid 动手 —— PID 复用导致的错杀会被这一层挡住。
-
 ## 安装
 
 从 GitHub 直接装：
@@ -54,7 +45,7 @@ dsh plugin --profile desktop add github:zhangkaiqiu/dsh-orphan-cleaner
 `desktop` 是桌面版的 profile 名（命令行版用 `web`，改成你自己的 profile）。也可以锁 tag：
 
 ```bash
-dsh plugin --profile desktop add github:zhangkaiqiu/dsh-orphan-cleaner#v0.1.0
+dsh plugin --profile desktop add github:zhangkaiqiu/dsh-orphan-cleaner#v0.2.0
 ```
 
 更新用 `dsh plugin --profile desktop update dsh-orphan-cleaner`（跟 main 时有效；装了 tag 的
@@ -64,7 +55,7 @@ dsh plugin --profile desktop add github:zhangkaiqiu/dsh-orphan-cleaner#v0.1.0
 回源码盘，peerDependencies 解析出第二份实例）：
 
 ```bash
-npm pack                                  # 生成 dsh-orphan-cleaner-0.1.0.tgz
+npm pack                                  # 生成 dsh-orphan-cleaner-0.2.0.tgz
 ```
 
 然后在 DSH 插件管理页安装这个 tgz。
@@ -74,7 +65,7 @@ npm pack                                  # 生成 dsh-orphan-cleaner-0.1.0.tgz
 | 方法 | 路径 | 说明 |
 |---|---|---|
 | GET | `/orphan-cleaner/scan?force=1` | 扫描，`force=1` 绕过 2 秒缓存 |
-| POST | `/orphan-cleaner/kill` | body：`{ groupIds?, pids?, onlyHigh? }` |
+| POST | `/orphan-cleaner/kill` | body：`{ groupIds: string[] }` |
 | GET | `/orphan-cleaner/state` | 启动自动扫描摘要 + 上次清理结果 |
 
 所有写接口都有跨站检查（`Origin` / `Sec-Fetch-Site`），防恶意网页远程杀进程。

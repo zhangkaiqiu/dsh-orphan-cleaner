@@ -1,6 +1,6 @@
 {
   "name": "dsh-orphan-cleaner",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "description": "Scan and terminate orphan processes (MCP stdio connectors, dev servers, stray process trees) left behind by DSH restarts.",
