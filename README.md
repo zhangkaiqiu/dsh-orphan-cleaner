@@ -57,7 +57,8 @@ dsh plugin --profile desktop add github:zhangkaiqiu/dsh-orphan-cleaner
 dsh plugin --profile desktop add github:zhangkaiqiu/dsh-orphan-cleaner#v0.1.0
 ```
 
-更新用 `dsh plugin --profile desktop update dsh-orphan-cleaner`，装完重启 DSH。
+更新用 `dsh plugin --profile desktop update dsh-orphan-cleaner`（跟 main 时有效；装了 tag 的
+升级要重新 `add` 新 tag），装完重启 DSH。
 
 本地开发时用 **tarball** 安装，不能用 `link:` 或目录依赖（目录依赖会让 Node 把入口 realpath
 回源码盘，peerDependencies 解析出第二份实例）：
