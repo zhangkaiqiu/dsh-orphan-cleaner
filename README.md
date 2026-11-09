@@ -45,14 +45,28 @@
 
 ## 安装
 
-必须以 **tarball** 形式安装，不能用 `link:` 或目录依赖（目录依赖会让 Node 把入口 realpath
-回源码盘，peerDependencies 解析出第二份实例）。
+从 GitHub 直接装：
+
+```bash
+dsh plugin --profile desktop add github:zhangkaiqiu/dsh-orphan-cleaner
+```
+
+`desktop` 是桌面版的 profile 名（命令行版用 `web`，改成你自己的 profile）。也可以锁 tag：
+
+```bash
+dsh plugin --profile desktop add github:zhangkaiqiu/dsh-orphan-cleaner#v0.1.0
+```
+
+更新用 `dsh plugin --profile desktop update dsh-orphan-cleaner`，装完重启 DSH。
+
+本地开发时用 **tarball** 安装，不能用 `link:` 或目录依赖（目录依赖会让 Node 把入口 realpath
+回源码盘，peerDependencies 解析出第二份实例）：
 
 ```bash
 npm pack                                  # 生成 dsh-orphan-cleaner-0.1.0.tgz
 ```
 
-然后用 DSH 插件管理安装这个 tgz，重启即可。
+然后在 DSH 插件管理页安装这个 tgz。
 
 ## 接口
 

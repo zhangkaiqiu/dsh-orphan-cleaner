@@ -3,7 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "扫描并清理孤儿进程：父进程已退出的 MCP 连接器、dev server 等遗留进程，一键查看与结束。",
+  "description": "Scan and terminate orphan processes (MCP stdio connectors, dev servers, stray process trees) left behind by DSH restarts.",
+  "license": "MIT",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "orphan-process",
+    "process-cleanup",
+    "mcp",
+    "windows"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangkaiqiu/dsh-orphan-cleaner.git"
+  },
+  "homepage": "https://github.com/zhangkaiqiu/dsh-orphan-cleaner#readme",
+  "bugs": {
+    "url": "https://github.com/zhangkaiqiu/dsh-orphan-cleaner/issues"
+  },
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
